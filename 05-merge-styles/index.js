@@ -42,5 +42,3 @@ const eachStyle = async function (folder) {
   }
 };
 eachStyle(path.join(__dirname, 'styles'));
-
-// readFile('style-1.css');

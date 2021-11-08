@@ -36,7 +36,6 @@ async function remove () {
   }
 }
 
-
 async function xxx (folder) {
   try {
     const files = await readdir.readdir(folder,{withFileTypes: true});
