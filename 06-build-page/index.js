@@ -101,11 +101,11 @@ function superHtml () {
     stream.on('end', () => {
       str = str + data;
       arrComp.push(str);
-      readHtmlFile(arrComp[0],arrComp[1],arrComp[2]);
+      readHtmlFile(arrComp[0],arrComp[1],arrComp[2],arrComp[3]);
     });
     stream.on('error', error => console.log('Error', error.message));
   }
-  function readHtmlFile (headerStr,articlesStr,footerStr) {
+  function readHtmlFile (headerStr,articlesStr,footerStr,about) {
     let str='';
     const stream = fs.createReadStream(path.join(__dirname, 'template.html' ), 'utf-8');
     let data = '';
@@ -115,6 +115,9 @@ function superHtml () {
         .replace('{{header}}', headerStr)
         .replace('{{articles}}', articlesStr)
         .replace('{{footer}}', footerStr);
+      if (about) {
+        data = data.replace('{{about}}', about);
+      }
     });
     stream.on('end', () => {
       str = str + data;
@@ -125,6 +128,11 @@ function superHtml () {
   readComponent('header.html');
   readComponent('articles.html');
   readComponent('footer.html');
+  fs.stat(path.join(__dirname, 'components' , 'about.html'), function(err, stats) {
+    if (stats) {
+      readComponent('about.html');
+    }
+  });
 }
 
 function featFolder () {
