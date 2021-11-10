@@ -8,7 +8,7 @@ const xxx = async function (folder) {
     for (const file of files) {
       if (!file.isDirectory()) {
         fs.stat(path.join(__dirname, 'secret-folder', file.name), (err, stats) => {
-          console.log(`${file.name} - ${path.extname(file.name).slice(1)} - ${Math.round(stats.size/1000)}kb`);
+          console.log(`${file.name.split('.')[0]} - ${path.extname(file.name).slice(1)} - ${Math.round(stats.size/1000)}kb`);
         });
       }
     }
