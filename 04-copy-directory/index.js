@@ -4,10 +4,10 @@ const copyFile = require('fs/promises');
 const removeFile = require('fs/promises');
 const readdir = require('fs/promises');
 
-xxx(path.join(__dirname));
 
 fs.mkdir(path.join(__dirname, 'files-copy'),{recursive: true} , err => {
   if (err) throw err;
+  xxx(path.join(__dirname));
 });
 
 async function superCopy (folder) {
